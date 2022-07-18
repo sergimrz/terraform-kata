@@ -12,3 +12,8 @@ variable account {
     description = "Account where the role will allow to be assumed"
     type = string
 }
+
+variable toggle_suffix {
+    description = "Decides if toggle the suffix with the resource type"
+    type = bool
+}

@@ -6,7 +6,7 @@ locals {
 
 # Define iam user
 resource "aws_iam_user" "user" {
-  name = "${local.fullname}-user"
+  name = var.toggle_suffix ? "${local.fullname}-user" : "${local.fullname}"
 }
 
 # Define iam group
@@ -16,7 +16,7 @@ resource "aws_iam_group" "group" {
 
 # Attach user to group
 resource "aws_iam_group_membership" "team" {
-  name = "${local.fullname}-membership"
+  name = var.toggle_suffix ? "${local.fullname}-membership" : "${local.fullname}"
   users = [
     aws_iam_user.user.name,
   ]
@@ -25,7 +25,7 @@ resource "aws_iam_group_membership" "team" {
 
 # Define role allowing all users from the account to assume the role.
 resource "aws_iam_role" "role" {
-  name = "${local.fullname}-role"
+  name = var.toggle_suffix ? "${local.fullname}-role" : "${local.fullname}"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -43,7 +43,7 @@ resource "aws_iam_role" "role" {
 
 # Create policy with permissions to assume the previous role
 resource "aws_iam_policy" "policy" {
-  name = "${local.fullname}-policy"
+  name = var.toggle_suffix ? "${local.fullname}-policy" : "${local.fullname}"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
