@@ -6,7 +6,7 @@
 
 # Set global variables and program arguments.
 BIN_PATH="/usr/bin/"
-VARIABLES_PATH="./variables/variables.tfvars"
+VARIABLES_PATH="./variables/ci/variables.tfvars"
 ENV=$1
 
 # get_current_env function returns the current value of the prefix variable using the commands grep + awk + sed.
