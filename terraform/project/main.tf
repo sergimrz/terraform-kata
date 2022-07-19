@@ -1,5 +1,7 @@
-# Define full name with the prefix and the name to avoid duplicate code
+# Define fullname variable with the prefix and the name to avoid duplicate code
 # and apply the same naming to all components.
+# Check that if the toggle_suffix variable is set to true it will add the resource type name
+# as suffix, otherwise the name will just be the fullname
 locals {
   fullname = "${var.prefix}-${var.name}"
 }
